@@ -8,221 +8,211 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green:       #2C5F2D;
-    --green-mid:   #4a8a4b;
-    --green-light: #8ab88b;
-    --green-pale:  #e0ede0;
-    --terra:       #C4622D;
-    --terra-light: #e0916b;
-    --terra-pale:  #faede5;
-    --sand:        #F5F0E8;
-    --sand-dark:   #E8DCC8;
-    --white:       #ffffff;
-    --charcoal:    #2c2c2c;
-    --mid-gray:    #6b6b6b;
-    --border:      #d9cfc0;
-    --shadow-sm:   0 2px 8px rgba(44,44,44,0.08);
-    --shadow-md:   0 4px 20px rgba(44,44,44,0.12);
-    --shadow-lg:   0 8px 40px rgba(44,44,44,0.16);
-    --radius:      12px;
-    --radius-sm:   8px;
+    --green:#2C5F2D;--green-mid:#4a8a4b;--green-light:#8ab88b;--green-pale:#e0ede0;
+    --terra:#C4622D;--terra-light:#e0916b;--terra-pale:#faede5;
+    --sand:#F5F0E8;--sand-dark:#E8DCC8;--white:#ffffff;
+    --charcoal:#2c2c2c;--mid-gray:#6b6b6b;--border:#d9cfc0;
+    --shadow-sm:0 2px 8px rgba(44,44,44,0.08);--shadow-md:0 4px 20px rgba(44,44,44,0.12);--shadow-lg:0 8px 40px rgba(44,44,44,0.16);
+    --radius:12px;--radius-sm:8px;
   }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;max-width:100vw;overflow-x:hidden;}
+  body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--charcoal);min-height:100vh;max-width:100vw;overflow-x:hidden;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; max-width: 100vw; overflow-x: hidden; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--sand); color: var(--charcoal); min-height: 100vh; max-width: 100vw; overflow-x: hidden; }
+  /* HEADER */
+  header{background:var(--green);color:var(--white);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);padding:0;}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .header-brand{display:flex;align-items:center;gap:1rem;}
+  .header-logo{width:38px;height:38px;background:var(--terra);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .header-text h1{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;line-height:1.1;letter-spacing:0.01em;}
+  .header-text p{font-size:0.7rem;opacity:0.65;letter-spacing:0.08em;text-transform:uppercase;}
+  .header-nav{display:flex;gap:0.5rem;align-items:center;flex-wrap:nowrap;}
+  .header-nav-btn{background:rgba(255,255,255,0.15);color:var(--white);border:1px solid rgba(255,255,255,0.3);padding:0.4rem 0.85rem;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:500;cursor:pointer;text-decoration:none;letter-spacing:0.02em;transition:background 0.2s,transform 0.1s;white-space:nowrap;display:inline-block;}
+  .header-nav-btn:hover{background:rgba(255,255,255,0.25);transform:translateY(-1px);}
 
-  /* ─── HEADER ─── */
-  header { background: var(--green); color: var(--white); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.25); padding: 0; }
-  .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .header-brand { display: flex; align-items: center; gap: 1rem; }
-  .header-logo { width: 38px; height: 38px; background: var(--terra); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .header-text h1 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.1; letter-spacing: 0.01em; }
-  .header-text p { font-size: 0.7rem; opacity: 0.65; letter-spacing: 0.08em; text-transform: uppercase; }
-  .header-nav { display: flex; gap: 0.5rem; align-items: center; flex-wrap: nowrap; }
-  .header-nav-btn { background: rgba(255,255,255,0.15); color: var(--white); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.85rem; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; cursor: pointer; text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s, transform 0.1s; white-space: nowrap; display: inline-block; }
-  .header-nav-btn:hover { background: rgba(255,255,255,0.25); transform: translateY(-1px); }
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 100%);color:var(--white);padding:48px 24px;text-align:center;}
+  .hero-inner{max-width:700px;margin:0 auto;}
+  .hero h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;line-height:1.2;margin-bottom:12px;}
+  .hero p{font-size:1rem;opacity:0.88;line-height:1.7;margin-bottom:28px;font-weight:300;}
+  .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--terra);color:var(--white);border:none;padding:13px 28px;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;box-shadow:0 3px 12px rgba(196,98,45,0.4);}
+  .btn-primary:hover{background:#a34d21;transform:translateY(-1px);}
+  .btn-secondary{background:rgba(255,255,255,0.15);color:var(--white);border:2px solid rgba(255,255,255,0.5);padding:12px 28px;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+  .btn-secondary:hover{background:rgba(255,255,255,0.25);transform:translateY(-1px);}
+  .btn-tertiary{background:rgba(255,255,255,0.1);color:var(--white);border:2px solid rgba(255,255,255,0.35);padding:12px 28px;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+  .btn-tertiary:hover{background:rgba(255,255,255,0.2);transform:translateY(-1px);}
 
-  /* ─── HERO ─── */
-  .hero { background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%); color: var(--white); padding: 48px 24px; text-align: center; }
-  .hero-inner { max-width: 700px; margin: 0 auto; }
-  .hero h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
-  .hero p { font-size: 1rem; opacity: 0.88; line-height: 1.7; margin-bottom: 28px; font-weight: 300; }
-  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary { background: var(--terra); color: var(--white); border: none; padding: 13px 28px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; box-shadow: 0 3px 12px rgba(196,98,45,0.4); }
-  .btn-primary:hover { background: #a34d21; transform: translateY(-1px); }
-  .btn-secondary { background: rgba(255,255,255,0.15); color: var(--white); border: 2px solid rgba(255,255,255,0.5); padding: 12px 28px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
-  .btn-secondary:hover { background: rgba(255,255,255,0.25); transform: translateY(-1px); }
+  /* STATS */
+  .stats-bar{background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:flex;gap:32px;align-items:center;flex-wrap:wrap;}
+  .stat{display:flex;align-items:center;gap:8px;font-size:0.88rem;color:var(--mid-gray);}
+  .stat-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--green);line-height:1;}
+  .stat-divider{width:1px;height:28px;background:var(--border);}
 
-  /* ─── STATS ─── */
-  .stats-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 24px; }
-  .stats-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
-  .stat { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--mid-gray); }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--green); line-height: 1; }
-  .stat-divider { width: 1px; height: 28px; background: var(--border); }
+  /* MAIN */
+  .main{max-width:1200px;margin:0 auto;padding:32px 24px;}
+  .section-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);margin-bottom:6px;}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);margin-bottom:20px;}
 
-  /* ─── MAIN ─── */
-  .main { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
-  .section-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--terra); margin-bottom: 6px; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--charcoal); margin-bottom: 20px; }
+  /* FILTERS */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+  .filter-btn{background:var(--white);border:1.5px solid var(--border);padding:7px 16px;border-radius:20px;font-size:0.83rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--mid-gray);transition:all 0.15s;}
+  .filter-btn:hover,.filter-btn.active{background:var(--green);border-color:var(--green);color:var(--white);}
 
-  /* ─── FILTERS ─── */
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-  .filter-btn { background: var(--white); border: 1.5px solid var(--border); padding: 7px 16px; border-radius: 20px; font-size: 0.83rem; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--mid-gray); transition: all 0.15s; }
-  .filter-btn:hover, .filter-btn.active { background: var(--green); border-color: var(--green); color: var(--white); }
+  /* CARDS */
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;}
+  .card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow-sm);overflow:hidden;transition:all 0.2s;}
+  .card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:var(--green-light);}
+  .card-top{height:4px;}
+  .cat-yard{background:#4caf50;}.cat-outdoor{background:#8bc34a;}.cat-indoor{background:#7986cb;}
+  .cat-moving{background:#ff8a65;}.cat-tech{background:#29b6f6;}.cat-other{background:#90a4ae;}
+  .card-body{padding:20px;}
+  .card-top-row{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:12px;}
+  .card-requestor{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;}
+  .card-badges{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0;}
+  .badge{font-size:0.72rem;font-weight:600;padding:3px 9px;border-radius:10px;letter-spacing:0.2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;}
+  .badge-open{background:#e8f5e9;color:#2e7d32;}.badge-matched{background:#fff3e0;color:#e65100;}
+  .badge-done{background:#f3e5f5;color:#6a1b9a;}.badge-coord{background:#e3f2fd;color:#1565c0;}
+  .cat-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px;}
+  .cat-tag{display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;color:var(--mid-gray);font-weight:500;background:var(--sand);padding:2px 8px;border-radius:10px;border:1px solid var(--border);}
+  .card-desc{font-size:0.9rem;line-height:1.6;margin-bottom:16px;}
+  .card-meta{display:flex;align-items:center;gap:14px;padding-top:14px;border-top:1px solid var(--sand-dark);font-size:0.8rem;color:var(--mid-gray);flex-wrap:wrap;}
+  .card-footer{padding:14px 20px;background:var(--sand);border-top:1px solid var(--border);display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .volunteer-chips{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
+  .vol-chip{background:var(--green-pale);color:var(--green);border:1px solid var(--green-light);padding:3px 10px;border-radius:10px;font-size:0.75rem;font-weight:500;}
+  .vol-chip.pending{background:#fff8e1;color:#f57f17;border-color:#ffca28;}
+  .btn-help{background:var(--green);color:var(--white);border:none;padding:8px 16px;border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;white-space:nowrap;}
+  .btn-help:hover{background:#1e4a1f;}
+  .btn-help.coord{background:#1565c0;}.btn-help.coord:hover{background:#0d47a1;}
 
-  /* ─── CARDS ─── */
-  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-  .card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); overflow: hidden; transition: all 0.2s; }
-  .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--green-light); }
-  .card-top { height: 4px; }
-  .cat-yard    { background: #4caf50; }
-  .cat-outdoor { background: #8bc34a; }
-  .cat-indoor  { background: #7986cb; }
-  .cat-moving  { background: #ff8a65; }
-  .cat-tech    { background: #29b6f6; }
-  .cat-other   { background: #90a4ae; }
-  .card-body { padding: 20px; }
-  .card-top-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; gap: 12px; }
-  .card-requestor { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; }
-  .card-badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
-  .badge { font-size: 0.72rem; font-weight: 600; padding: 3px 9px; border-radius: 10px; letter-spacing: 0.2px; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
-  .badge-open     { background: #e8f5e9; color: #2e7d32; }
-  .badge-matched  { background: #fff3e0; color: #e65100; }
-  .badge-done     { background: #f3e5f5; color: #6a1b9a; }
-  .badge-coord    { background: #e3f2fd; color: #1565c0; }
-  .card-cat-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; color: var(--mid-gray); margin-bottom: 10px; font-weight: 500; }
-  .card-desc { font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; }
-  .card-meta { display: flex; align-items: center; gap: 14px; padding-top: 14px; border-top: 1px solid var(--sand-dark); font-size: 0.8rem; color: var(--mid-gray); flex-wrap: wrap; }
-  .card-footer { padding: 14px 20px; background: var(--sand); border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-  .volunteer-chips { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
-  .vol-chip { background: var(--green-pale); color: var(--green); border: 1px solid var(--green-light); padding: 3px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: 500; }
-  .vol-chip.pending { background: #fff8e1; color: #f57f17; border-color: #ffca28; }
-  .btn-help { background: var(--green); color: var(--white); border: none; padding: 8px 16px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; white-space: nowrap; }
-  .btn-help:hover { background: #1e4a1f; }
-  .btn-help.coord { background: #1565c0; }
-  .btn-help.coord:hover { background: #0d47a1; }
+  /* STATES */
+  .loading-state{text-align:center;padding:60px 20px;color:var(--mid-gray);grid-column:1/-1;}
+  .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .empty-state{text-align:center;padding:60px 20px;color:var(--mid-gray);grid-column:1/-1;}
+  .empty-icon{font-size:3rem;margin-bottom:16px;}
 
-  /* ─── STATES ─── */
-  .loading-state { text-align: center; padding: 60px 20px; color: var(--mid-gray); grid-column: 1/-1; }
-  .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .empty-state { text-align: center; padding: 60px 20px; color: var(--mid-gray); grid-column: 1/-1; }
-  .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+  /* OVERLAY / MODAL */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+  .overlay.open{opacity:1;pointer-events:all;}
+  .modal{background:var(--white);border-radius:var(--radius);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);transform:translateY(20px);transition:transform 0.25s;}
+  .overlay.open .modal{transform:translateY(0);}
+  .modal-header{padding:22px 24px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--white);z-index:10;}
+  .modal-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;}
+  .modal-close{width:32px;height:32px;border:none;background:var(--sand-dark);border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;color:var(--mid-gray);transition:background 0.15s;flex-shrink:0;}
+  .modal-close:hover{background:var(--border);}
+  .modal-body{padding:22px 24px;}
+  .modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;position:sticky;bottom:0;background:var(--white);}
 
-  /* ─── OVERLAY / MODAL ─── */
-  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: flex; align-items: flex-end; justify-content: center; padding: 0; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
-  .overlay.open { opacity: 1; pointer-events: all; }
-  .modal { background: var(--white); border-radius: var(--radius) var(--radius) 0 0; width: 100%; max-width: 560px; max-height: 92vh; overflow-y: auto; box-shadow: var(--shadow-lg); transform: translateY(30px); transition: transform 0.25s; }
-  .overlay.open .modal { transform: translateY(0); }
-  .modal-header { padding: 22px 24px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--white); z-index: 10; }
-  .modal-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; }
-  .modal-close { width: 32px; height: 32px; border: none; background: var(--sand-dark); border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; color: var(--mid-gray); transition: background 0.15s; flex-shrink: 0; }
-  .modal-close:hover { background: var(--border); }
-  .modal-body { padding: 22px 24px; }
-  .modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; gap: 10px; justify-content: flex-end; position: sticky; bottom: 0; background: var(--white); }
+  /* FORMS */
+  .form-group{margin-bottom:18px;}
+  label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:6px;font-family:'DM Sans',sans-serif;}
+  .form-hint{font-size:0.78rem;color:var(--mid-gray);margin-top:4px;}
+  input[type="text"],input[type="password"],textarea,select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--charcoal);background:var(--white);transition:border-color 0.15s;outline:none;-webkit-appearance:none;}
+  input:focus,textarea:focus,select:focus{border-color:var(--green);}
+  textarea{resize:vertical;min-height:90px;}
 
-  /* ─── FORMS ─── */
-  .form-group { margin-bottom: 18px; }
-  label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; font-family: 'DM Sans', sans-serif; }
-  .form-hint { font-size: 0.78rem; color: var(--mid-gray); margin-top: 4px; }
-  input[type="text"], textarea, select { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--charcoal); background: var(--white); transition: border-color 0.15s; outline: none; -webkit-appearance: none; }
-  input:focus, textarea:focus, select:focus { border-color: var(--green); }
-  textarea { resize: vertical; min-height: 90px; }
+  /* MULTI-SELECT CHECKBOXES */
+  .checkbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .checkbox-option{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;background:var(--white);font-size:0.85rem;font-family:'DM Sans',sans-serif;}
+  .checkbox-option:hover{border-color:var(--green);background:var(--green-pale);}
+  .checkbox-option input[type="checkbox"]{width:16px;height:16px;accent-color:var(--green);cursor:pointer;flex-shrink:0;}
+  .checkbox-option.checked{border-color:var(--green);background:var(--green-pale);color:var(--green);font-weight:600;}
 
-  .category-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .cat-option { border: 1.5px solid var(--border); border-radius: 8px; padding: 10px 12px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; transition: all 0.15s; background: var(--white); font-family: 'DM Sans', sans-serif; }
-  .cat-option:hover { border-color: var(--green); background: var(--green-pale); }
-  .cat-option.selected { border-color: var(--green); background: var(--green-pale); color: var(--green); font-weight: 600; }
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--border);gap:16px;}
+  .toggle-label{font-size:0.88rem;font-weight:600;}
+  .toggle-desc{font-size:0.78rem;color:var(--mid-gray);margin-top:2px;}
+  .toggle{position:relative;width:44px;height:24px;flex-shrink:0;}
+  .toggle input{opacity:0;width:0;height:0;}
+  .toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:12px;cursor:pointer;transition:0.2s;}
+  .toggle-slider:before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:var(--white);border-radius:50%;transition:0.2s;}
+  .toggle input:checked+.toggle-slider{background:var(--green);}
+  .toggle input:checked+.toggle-slider:before{transform:translateX(20px);}
 
-  .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--border); gap: 16px; }
-  .toggle-label { font-size: 0.88rem; font-weight: 600; }
-  .toggle-desc { font-size: 0.78rem; color: var(--mid-gray); margin-top: 2px; }
-  .toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
-  .toggle input { opacity: 0; width: 0; height: 0; }
-  .toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 12px; cursor: pointer; transition: 0.2s; }
-  .toggle-slider:before { content: ''; position: absolute; height: 18px; width: 18px; left: 3px; bottom: 3px; background: var(--white); border-radius: 50%; transition: 0.2s; }
-  .toggle input:checked + .toggle-slider { background: var(--green); }
-  .toggle input:checked + .toggle-slider:before { transform: translateX(20px); }
+  .info-box{background:var(--green-pale);border:1px solid var(--green-light);border-radius:8px;padding:12px 14px;font-size:0.83rem;color:var(--green);margin-bottom:16px;line-height:1.55;}
+  .info-box.terra{background:var(--terra-pale);border-color:var(--terra-light);color:#7a3a20;}
+  .request-preview{background:var(--sand);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:18px;}
+  .request-preview h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:4px;}
+  .request-preview p{font-size:0.82rem;color:var(--mid-gray);}
 
-  .info-box { background: var(--green-pale); border: 1px solid var(--green-light); border-radius: 8px; padding: 12px 14px; font-size: 0.83rem; color: var(--green); margin-bottom: 16px; line-height: 1.55; }
-  .info-box.terra { background: var(--terra-pale); border-color: var(--terra-light); color: #7a3a20; }
+  .btn-cancel{background:var(--white);color:var(--mid-gray);border:1.5px solid var(--border);padding:10px 20px;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+  .btn-submit{background:var(--green);color:var(--white);border:none;padding:10px 24px;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;}
+  .btn-submit:hover{background:#1e4a1f;}
+  .btn-submit:disabled{opacity:0.6;cursor:not-allowed;}
+  .success-msg{text-align:center;padding:24px 16px;}
+  .success-icon{font-size:3rem;margin-bottom:12px;}
+  .success-msg h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:8px;}
+  .success-msg p{font-size:0.9rem;color:var(--mid-gray);line-height:1.6;}
 
-  .request-preview { background: var(--sand); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 18px; }
-  .request-preview h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 4px; }
-  .request-preview p { font-size: 0.82rem; color: var(--mid-gray); }
+  /* ADMIN */
+  .admin-login{max-width:380px;margin:0 auto;text-align:center;}
+  .admin-login h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:6px;}
+  .admin-login p{font-size:0.85rem;color:var(--mid-gray);margin-bottom:20px;}
+  .user-select-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+  .user-select-btn{border:1.5px solid var(--border);border-radius:8px;padding:12px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;background:var(--white);transition:all 0.15s;}
+  .user-select-btn.selected{border-color:var(--green);background:var(--green-pale);color:var(--green);}
+  .admin-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:24px;overflow-x:auto;}
+  .admin-tab{padding:10px 16px;border:none;background:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;color:var(--mid-gray);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;white-space:nowrap;flex-shrink:0;}
+  .admin-tab.active{color:var(--green);border-bottom-color:var(--green);}
+  .admin-row{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;}
+  .admin-row h4{font-family:'Playfair Display',serif;font-size:0.95rem;margin-bottom:8px;}
+  .admin-private{background:#fff8e1;border:1px dashed #f57f17;border-radius:6px;padding:10px 12px;font-size:0.82rem;margin:8px 0;}
+  .admin-private strong{color:#e65100;}
+  .pending-item{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--sand);border-radius:6px;margin-bottom:6px;font-size:0.85rem;flex-wrap:wrap;gap:8px;}
+  .pending-actions{display:flex;gap:8px;}
+  .btn-approve{background:var(--green);color:var(--white);border:none;padding:5px 12px;border-radius:6px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+  .btn-approve:hover{background:#1e4a1f;}
+  .btn-reject{background:#f5f5f5;color:#c62828;border:1px solid #ffcdd2;padding:5px 12px;border-radius:6px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+  .btn-reject:hover{background:#ffebee;}
+  .btn-done{background:var(--white);color:#6a1b9a;border:1.5px solid #ce93d8;padding:5px 12px;border-radius:6px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+  .btn-done:hover{background:#f3e5f5;}
+  .btn-archive{background:var(--white);color:var(--mid-gray);border:1.5px solid var(--border);padding:5px 12px;border-radius:6px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+  .btn-archive:hover{background:var(--sand);}
+  .btn-remove-vol{background:none;border:none;cursor:pointer;color:#c62828;font-size:0.85rem;padding:0;margin-left:4px;line-height:1;}
+  .pool-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;}
+  .pool-card-info h4{font-size:0.95rem;font-weight:600;margin-bottom:4px;}
+  .pool-card-info p{font-size:0.82rem;color:var(--mid-gray);}
+  .pool-skills{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;}
+  .skill-tag{background:var(--green-pale);color:var(--green);border:1px solid var(--green-light);padding:2px 8px;border-radius:10px;font-size:0.72rem;font-weight:600;}
 
-  .btn-cancel { background: var(--white); color: var(--mid-gray); border: 1.5px solid var(--border); padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-  .btn-submit { background: var(--green); color: var(--white); border: none; padding: 10px 24px; border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .btn-submit:hover { background: #1e4a1f; }
-  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  /* FOOTER */
+  footer{background:var(--green);color:rgba(255,255,255,0.7);text-align:center;padding:24px;font-size:0.8rem;line-height:1.6;margin-top:48px;font-family:'DM Sans',sans-serif;}
+  footer p{max-width:700px;margin:0 auto;}
+  footer a{color:var(--green-light);}
+  footer strong{color:var(--white);}
 
-  .success-msg { text-align: center; padding: 24px 16px; }
-  .success-icon { font-size: 3rem; margin-bottom: 12px; }
-  .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 8px; }
-  .success-msg p { font-size: 0.9rem; color: var(--mid-gray); line-height: 1.6; }
-
-  /* ─── ADMIN ─── */
-  .admin-login { max-width: 380px; margin: 0 auto; text-align: center; }
-  .admin-login h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 6px; }
-  .admin-login p { font-size: 0.85rem; color: var(--mid-gray); margin-bottom: 20px; }
-  .user-select-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-  .user-select-btn { border: 1.5px solid var(--border); border-radius: 8px; padding: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600; background: var(--white); transition: all 0.15s; }
-  .user-select-btn.selected { border-color: var(--green); background: var(--green-pale); color: var(--green); }
-  .admin-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 24px; }
-  .admin-tab { padding: 10px 20px; border: none; background: none; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--mid-gray); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.15s; }
-  .admin-tab.active { color: var(--green); border-bottom-color: var(--green); }
-  .admin-row { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 12px; }
-  .admin-row h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; margin-bottom: 8px; }
-  .admin-private { background: #fff8e1; border: 1px dashed #f57f17; border-radius: 6px; padding: 10px 12px; font-size: 0.82rem; margin: 8px 0; }
-  .admin-private strong { color: #e65100; }
-  .pending-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: var(--sand); border-radius: 6px; margin-bottom: 6px; font-size: 0.85rem; flex-wrap: wrap; gap: 8px; }
-  .pending-actions { display: flex; gap: 8px; }
-  .btn-approve { background: var(--green); color: var(--white); border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-  .btn-approve:hover { background: #1e4a1f; }
-  .btn-reject { background: #f5f5f5; color: #c62828; border: 1px solid #ffcdd2; padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-  .btn-reject:hover { background: #ffebee; }
-  .btn-done { background: var(--white); color: #6a1b9a; border: 1.5px solid #ce93d8; padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-  .btn-done:hover { background: #f3e5f5; }
-  .btn-remove-vol { background: none; border: none; cursor: pointer; color: #c62828; font-size: 0.85rem; padding: 0; margin-left: 4px; line-height: 1; }
-
-  /* ─── FOOTER ─── */
-  footer { background: var(--green); color: rgba(255,255,255,0.7); text-align: center; padding: 24px; font-size: 0.8rem; line-height: 1.6; margin-top: 48px; font-family: 'DM Sans', sans-serif; }
-  footer p { max-width: 700px; margin: 0 auto; }
-  footer a { color: var(--green-light); }
-  footer strong { color: var(--white); }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 640px) {
-    .header-inner { padding: 0 1rem; }
-    .header-text h1 { font-size: 0.95rem; }
-    .header-text p { display: none; }
-    .header-logo { width: 32px; height: 32px; font-size: 15px; }
-    .header-nav-btn { font-size: 0.65rem; padding: 0.35rem 0.55rem; }
-    .hero { padding: 32px 16px; }
-    .hero h2 { font-size: 1.7rem; }
-    .btn-primary, .btn-secondary { width: 100%; text-align: center; }
-    .hero-actions { flex-direction: column; }
-    .stats-inner { gap: 0; justify-content: space-between; }
-    .stat { flex-direction: column; align-items: center; gap: 2px; flex: 1; text-align: center; }
-    .stat-divider { width: 1px; height: 32px; }
-    .main { padding: 20px 16px; }
-    .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
-    .filters::-webkit-scrollbar { display: none; }
-    .filter-btn { white-space: nowrap; flex-shrink: 0; }
-    .cards-grid { grid-template-columns: 1fr; gap: 14px; }
-    .card-footer { flex-direction: column; align-items: stretch; }
-    .btn-help { width: 100%; text-align: center; }
-    .modal-footer { flex-direction: column-reverse; }
-    .modal-footer .btn-submit, .modal-footer .btn-cancel { width: 100%; text-align: center; padding: 13px; }
-    .category-grid { grid-template-columns: 1fr; }
-    .admin-tab { padding: 10px 12px; font-size: 0.8rem; }
+  /* RESPONSIVE */
+  @media(max-width:640px){
+    .header-inner{padding:0 1rem;}
+    .header-text h1{font-size:0.95rem;}
+    .header-text p{display:none;}
+    .header-logo{width:32px;height:32px;font-size:15px;}
+    .header-nav-btn{font-size:0.65rem;padding:0.35rem 0.55rem;}
+    .hero{padding:32px 16px;}
+    .hero h2{font-size:1.7rem;}
+    .btn-primary,.btn-secondary,.btn-tertiary{width:100%;text-align:center;}
+    .hero-actions{flex-direction:column;}
+    .stats-inner{gap:0;justify-content:space-between;}
+    .stat{flex-direction:column;align-items:center;gap:2px;flex:1;text-align:center;}
+    .stat-divider{width:1px;height:32px;}
+    .main{padding:20px 16px;}
+    .filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+    .filters::-webkit-scrollbar{display:none;}
+    .filter-btn{white-space:nowrap;flex-shrink:0;}
+    .cards-grid{grid-template-columns:1fr;gap:14px;}
+    .card-footer{flex-direction:column;align-items:stretch;}
+    .btn-help{width:100%;text-align:center;}
+    .overlay{padding:0;align-items:flex-end;}
+    .modal{max-width:100%;border-radius:var(--radius) var(--radius) 0 0;max-height:92vh;}
+    .modal-footer{flex-direction:column-reverse;}
+    .modal-footer .btn-submit,.modal-footer .btn-cancel{width:100%;text-align:center;padding:13px;}
+    .checkbox-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
 
-<!-- ─── HEADER ─── -->
 <header>
   <div class="header-inner">
     <div class="header-brand">
@@ -241,30 +231,30 @@
   </div>
 </header>
 
-<!-- ─── HERO ─── -->
 <div class="hero">
   <div class="hero-inner">
     <h2>Good Neighbors Help Each Other</h2>
-    <p>Post a request for help with a task, or sign up to lend a hand to a neighbor in need. Together we make Dobson Terrace a place where everyone thrives.</p>
+    <p>Post a request for help with a task, sign up to lend a hand to a neighbor in need, or join our volunteer pool to be matched with future requests.</p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="openRequestModal()">📋 I Need Help</button>
       <button class="btn-secondary" onclick="document.getElementById('boardSection').scrollIntoView({behavior:'smooth'})">🙋 I Want to Help</button>
+      <button class="btn-tertiary" onclick="openPoolModal()">⭐ Join Volunteer Pool</button>
     </div>
   </div>
 </div>
 
-<!-- ─── STATS ─── -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat"><div class="stat-num" id="statOpen">—</div><div>open requests</div></div>
     <div class="stat-divider"></div>
     <div class="stat"><div class="stat-num" id="statVols">—</div><div>volunteers signed up</div></div>
     <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num" id="statPool">—</div><div>in volunteer pool</div></div>
+    <div class="stat-divider"></div>
     <div class="stat"><div class="stat-num" id="statDone">—</div><div>completed this year</div></div>
   </div>
 </div>
 
-<!-- ─── MAIN ─── -->
 <div class="main" id="boardSection">
   <div class="section-eyebrow">Neighbors Helping Neighbors</div>
   <div class="section-title">Help Requests</div>
@@ -293,15 +283,15 @@
       <div class="form-group"><label>Your First Name *</label><input type="text" id="reqName" placeholder="e.g. Maria"></div>
       <div class="form-group"><label>Contact (phone or email) *</label><input type="text" id="reqContact" placeholder="e.g. 480-555-1234"></div>
       <div class="form-group"><label>Street Address *</label><input type="text" id="reqAddress" placeholder="e.g. 2441 W Orchid Ln"><div class="form-hint">Only shared with approved volunteers.</div></div>
-      <div class="form-group"><label>What do you need help with? *</label><textarea id="reqDesc" placeholder="Describe the task(s). Keep it to what could be done in about 3 hours or less."></textarea></div>
-      <div class="form-group"><label>Category</label>
-        <div class="category-grid">
-          <button class="cat-option" onclick="selectCat(this,'yard')">🌿 Yard Work</button>
-          <button class="cat-option" onclick="selectCat(this,'outdoor')">🏠 Outdoor Upkeep</button>
-          <button class="cat-option" onclick="selectCat(this,'indoor')">🛋️ Indoor Help</button>
-          <button class="cat-option" onclick="selectCat(this,'moving')">📦 Moving / Heavy</button>
-          <button class="cat-option" onclick="selectCat(this,'tech')">💡 Tech / Misc</button>
-          <button class="cat-option selected" onclick="selectCat(this,'other')">🤝 Other</button>
+      <div class="form-group"><label>What do you need help with? *</label><textarea id="reqDesc" placeholder="Describe the task(s). Keep it to about 3 hours or less."></textarea></div>
+      <div class="form-group"><label>Categories (select all that apply)</label>
+        <div class="checkbox-grid" id="catCheckboxes">
+          <label class="checkbox-option"><input type="checkbox" value="yard" onchange="updateCheckbox(this)"> 🌿 Yard Work</label>
+          <label class="checkbox-option"><input type="checkbox" value="outdoor" onchange="updateCheckbox(this)"> 🏠 Outdoor Upkeep</label>
+          <label class="checkbox-option"><input type="checkbox" value="indoor" onchange="updateCheckbox(this)"> 🛋️ Indoor Help</label>
+          <label class="checkbox-option"><input type="checkbox" value="moving" onchange="updateCheckbox(this)"> 📦 Moving/Heavy</label>
+          <label class="checkbox-option"><input type="checkbox" value="tech" onchange="updateCheckbox(this)"> 💡 Tech/Misc</label>
+          <label class="checkbox-option"><input type="checkbox" value="other" onchange="updateCheckbox(this)"> 🤝 Other</label>
         </div>
       </div>
       <div class="toggle-row">
@@ -328,6 +318,37 @@
   </div>
 </div>
 
+<!-- POOL MODAL -->
+<div class="overlay" id="poolOverlay" onclick="closeOnOverlay(event,'poolOverlay')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title" id="poolModalTitle">Join the Volunteer Pool</div>
+      <button class="modal-close" onclick="closeModal('poolOverlay')">✕</button>
+    </div>
+    <div class="modal-body" id="poolModalBody">
+      <div class="info-box">⭐ By joining the volunteer pool you're letting us know you're open to helping neighbors in the future. We'll reach out when a request matches your skills!</div>
+      <div class="form-group"><label>Your Name *</label><input type="text" id="poolName" placeholder="e.g. Maria Garcia"></div>
+      <div class="form-group"><label>Contact (phone or email) *</label><input type="text" id="poolContact" placeholder="e.g. 480-555-1234"></div>
+      <div class="form-group"><label>What kinds of tasks can you help with? (select all that apply)</label>
+        <div class="checkbox-grid" id="skillCheckboxes">
+          <label class="checkbox-option"><input type="checkbox" value="yard" onchange="updateSkillCheckbox(this)"> 🌿 Yard Work</label>
+          <label class="checkbox-option"><input type="checkbox" value="outdoor" onchange="updateSkillCheckbox(this)"> 🏠 Outdoor Upkeep</label>
+          <label class="checkbox-option"><input type="checkbox" value="indoor" onchange="updateSkillCheckbox(this)"> 🛋️ Indoor Help</label>
+          <label class="checkbox-option"><input type="checkbox" value="moving" onchange="updateSkillCheckbox(this)"> 📦 Moving/Heavy</label>
+          <label class="checkbox-option"><input type="checkbox" value="tech" onchange="updateSkillCheckbox(this)"> 💡 Tech/Misc</label>
+          <label class="checkbox-option"><input type="checkbox" value="other" onchange="updateSkillCheckbox(this)"> 🤝 General Help</label>
+        </div>
+      </div>
+      <div class="form-group"><label>General availability</label><input type="text" id="poolAvailability" placeholder="e.g. weekends, weekday evenings, flexible"></div>
+      <div class="form-group"><label>Anything else we should know? (optional)</label><textarea id="poolMessage" placeholder="e.g. I have a truck, I speak Spanish, I'm great with tech" style="min-height:70px"></textarea></div>
+    </div>
+    <div class="modal-footer" id="poolModalFooter">
+      <button class="btn-cancel" onclick="closeModal('poolOverlay')">Cancel</button>
+      <button class="btn-submit" onclick="submitPool()">Join the Pool</button>
+    </div>
+  </div>
+</div>
+
 <!-- ADMIN MODAL -->
 <div class="overlay" id="adminOverlay" onclick="closeOnOverlay(event,'adminOverlay')">
   <div class="modal" style="max-width:680px" onclick="event.stopPropagation()">
@@ -339,7 +360,6 @@
   </div>
 </div>
 
-<!-- ─── FOOTER ─── -->
 <footer>
   <p>
     <strong>⭐ This is a community-organized volunteer effort.</strong><br>
@@ -349,19 +369,18 @@
 </footer>
 
 <script>
-// ─── CONFIG ──────────────────────────────────────────────────
 const PROXY = 'https://airtable-proxy.bridgettrhart.workers.dev';
 const BASE  = 'appeNcoRQKGsVAiEZ';
 const COORDINATOR_PINS = { austin: '2347', bridgett: '2442' };
 
-// ─── STATE ───────────────────────────────────────────────────
 let allRequests = [];
 let allVolunteers = [];
 let currentFilter = 'all';
-let selectedCat = 'other';
 let currentReqId = null;
 let adminSession = null;
 let pendingAdminUser = '';
+let selectedCategories = [];
+let selectedSkills = [];
 
 const CATS = {
   yard:    { label: 'Yard Work',      icon: '🌿', cls: 'cat-yard' },
@@ -372,32 +391,26 @@ const CATS = {
   other:   { label: 'Other',          icon: '🤝', cls: 'cat-other' },
 };
 
-// ─── INIT ─────────────────────────────────────────────────────
-async function airtable(table, method = 'GET', body = null) {
+// ─── API ──────────────────────────────────────────────────────
+async function airtable(table, method='GET', body=null) {
   const opts = { method, headers: { 'Content-Type': 'application/json' } };
   if (body) opts.body = JSON.stringify(body);
   const res = await fetch(`${PROXY}/${BASE}/${encodeURIComponent(table)}`, opts);
   return res.json();
 }
-
-async function airtablePost(table, fields) {
-  return airtable(table, 'POST', { records: [{ fields }] });
-}
-
+async function airtablePost(table, fields) { return airtable(table,'POST',{records:[{fields}]}); }
 async function airtablePatch(table, id, fields) {
-  const opts = { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ records: [{ id, fields }] }) };
+  const opts = { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({records:[{id,fields}]}) };
   const res = await fetch(`${PROXY}/${BASE}/${encodeURIComponent(table)}`, opts);
   return res.json();
 }
 
+// ─── LOAD ─────────────────────────────────────────────────────
 async function loadAll() {
   try {
-    const [reqData, volData] = await Promise.all([
-      airtable('requests'),
-      airtable('volunteers')
-    ]);
-    allRequests = (reqData.records || []).map(r => ({ id: r.id, ...r.fields }));
-    allVolunteers = (volData.records || []).map(v => ({ id: v.id, ...v.fields }));
+    const [reqData, volData] = await Promise.all([airtable('requests'), airtable('volunteers')]);
+    allRequests  = (reqData.records||[]).map(r=>({id:r.id,...r.fields}));
+    allVolunteers = (volData.records||[]).map(v=>({id:v.id,...v.fields}));
     renderCards();
     updateStats();
   } catch(e) {
@@ -405,16 +418,23 @@ async function loadAll() {
       `<div class="empty-state"><div class="empty-icon">⚠️</div><p>Could not load requests. Please refresh.</p></div>`;
   }
 }
-
 loadAll();
 
 // ─── RENDER ───────────────────────────────────────────────────
+function getCategoryArray(val) {
+  if (!val) return [];
+  if (Array.isArray(val)) return val;
+  return [val];
+}
+
 function renderCards() {
   const grid = document.getElementById('cardsGrid');
-  const visible = allRequests.filter(r =>
-    r.status !== 'removed' && r.status !== 'done' &&
-    (currentFilter === 'all' || r.category === currentFilter)
-  );
+  const visible = allRequests.filter(r => {
+    if (r.status === 'removed' || r.status === 'done') return false;
+    if (currentFilter === 'all') return true;
+    const cats = getCategoryArray(r.category);
+    return cats.includes(currentFilter);
+  });
 
   if (!visible.length) {
     grid.innerHTML = `<div class="empty-state"><div class="empty-icon">🌱</div><p>No open requests in this category right now.</p></div>`;
@@ -422,78 +442,87 @@ function renderCards() {
   }
 
   grid.innerHTML = visible.map(r => {
-    const cat = CATS[r.category] || CATS.other;
+    const cats = getCategoryArray(r.category);
+    const primaryCat = CATS[cats[0]] || CATS.other;
     const approvedVols = allVolunteers.filter(v => v.request_id === r.id && v.status === 'approved');
-    const pendingVols = allVolunteers.filter(v => v.request_id === r.id && v.status === 'pending');
+    const pendingVols  = allVolunteers.filter(v => v.request_id === r.id && v.status === 'pending');
 
     const statusBadge = approvedVols.length
       ? `<span class="badge badge-matched">Volunteer found</span>`
       : `<span class="badge badge-open">Open</span>`;
     const coordBadge = r.coordinator_only ? `<span class="badge badge-coord">Coord. match</span>` : '';
 
-    const volChips = approvedVols.map(v => `<span class="vol-chip">✓ ${esc(v.volunteer_name)}</span>`).join('');
-    const pendChips = pendingVols.map(v => `<span class="vol-chip pending">⏳ ${esc(v.volunteer_name)}</span>`).join('');
+    const catTags = cats.map(c => {
+      const cat = CATS[c] || CATS.other;
+      return `<span class="cat-tag">${cat.icon} ${cat.label}</span>`;
+    }).join('');
 
-    const helpBtn = `<button class="btn-help ${r.coordinator_only ? 'coord' : ''}" onclick="openVolunteerModal('${r.id}')">
-      ${r.coordinator_only ? '🔵 Request to Help' : '🙋 I Can Help'}
-    </button>`;
+    const volChips = approvedVols.map(v=>`<span class="vol-chip">✓ ${esc(v.volunteer_name)}</span>`).join('');
+    const pendChips = pendingVols.map(v=>`<span class="vol-chip pending">⏳ ${esc(v.volunteer_name)}</span>`).join('');
 
-    return `<div class="card" data-cat="${r.category}">
-      <div class="card-top ${cat.cls}"></div>
+    return `<div class="card" data-cat="${cats.join(',')}">
+      <div class="card-top ${primaryCat.cls}"></div>
       <div class="card-body">
         <div class="card-top-row">
           <div class="card-requestor">${esc(r.name)}</div>
           <div class="card-badges">${statusBadge}${coordBadge}</div>
         </div>
-        <div class="card-cat-tag">${cat.icon} ${cat.label}</div>
+        <div class="cat-tags">${catTags}</div>
         <div class="card-desc">${esc(r.desc)}</div>
         <div class="card-meta">
           <span>📅 ${fmtDate(r.submitted_at)}</span>
-          ${approvedVols.length ? `<span>👋 ${approvedVols.length} helping</span>` : ''}
+          ${approvedVols.length?`<span>👋 ${approvedVols.length} helping</span>`:''}
         </div>
       </div>
       <div class="card-footer">
         <div class="volunteer-chips">${volChips}${pendChips}</div>
-        ${helpBtn}
+        <button class="btn-help ${r.coordinator_only?'coord':''}" onclick="openVolunteerModal('${r.id}')">
+          ${r.coordinator_only?'🔵 Request to Help':'🙋 I Can Help'}
+        </button>
       </div>
     </div>`;
   }).join('');
 }
 
 function updateStats() {
-  const open = allRequests.filter(r => r.status === 'open' || r.status === 'matched').length;
-  const vols = allVolunteers.filter(v => v.status === 'approved' || v.status === 'pending').length;
-  const done = allRequests.filter(r => r.status === 'done').length;
+  const open = allRequests.filter(r=>r.status==='open'||r.status==='matched').length;
+  const vols = allVolunteers.filter(v=>v.request_id&&(v.status==='approved'||v.status==='pending')).length;
+  const pool = allVolunteers.filter(v=>v.status==='general').length;
+  const done = allRequests.filter(r=>r.status==='done').length;
   document.getElementById('statOpen').textContent = open;
   document.getElementById('statVols').textContent = vols;
+  document.getElementById('statPool').textContent = pool;
   document.getElementById('statDone').textContent = done;
 }
 
 function filterCards(btn, cat) {
   currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderCards();
 }
 
+// ─── CHECKBOX HELPERS ─────────────────────────────────────────
+function updateCheckbox(el) {
+  el.closest('.checkbox-option').classList.toggle('checked', el.checked);
+  selectedCategories = Array.from(document.querySelectorAll('#catCheckboxes input:checked')).map(i=>i.value);
+}
+function updateSkillCheckbox(el) {
+  el.closest('.checkbox-option').classList.toggle('checked', el.checked);
+  selectedSkills = Array.from(document.querySelectorAll('#skillCheckboxes input:checked')).map(i=>i.value);
+}
+
 // ─── REQUEST FORM ─────────────────────────────────────────────
 function openRequestModal() {
-  selectedCat = 'other';
-  ['reqName','reqContact','reqAddress','reqDesc'].forEach(id => { if(document.getElementById(id)) document.getElementById(id).value = ''; });
-  if(document.getElementById('reqCoordOnly')) document.getElementById('reqCoordOnly').checked = false;
-  document.querySelectorAll('.cat-option').forEach(el => el.classList.remove('selected'));
-  document.querySelector('.cat-option:last-child')?.classList.add('selected');
-  document.getElementById('requestModalTitle').textContent = 'Post a Help Request';
-  document.getElementById('requestModalFooter').innerHTML =
+  selectedCategories = [];
+  ['reqName','reqContact','reqAddress','reqDesc'].forEach(id=>{if(document.getElementById(id))document.getElementById(id).value='';});
+  if(document.getElementById('reqCoordOnly'))document.getElementById('reqCoordOnly').checked=false;
+  document.querySelectorAll('#catCheckboxes input').forEach(cb=>{cb.checked=false;cb.closest('.checkbox-option').classList.remove('checked');});
+  document.getElementById('requestModalTitle').textContent='Post a Help Request';
+  document.getElementById('requestModalFooter').innerHTML=
     `<button class="btn-cancel" onclick="closeModal('requestOverlay')">Cancel</button>
      <button class="btn-submit" onclick="submitRequest()">Post Request</button>`;
   openModal('requestOverlay');
-}
-
-function selectCat(el, cat) {
-  document.querySelectorAll('.cat-option').forEach(e => e.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedCat = cat;
 }
 
 async function submitRequest() {
@@ -501,89 +530,120 @@ async function submitRequest() {
   const contact = document.getElementById('reqContact')?.value.trim();
   const address = document.getElementById('reqAddress')?.value.trim();
   const desc    = document.getElementById('reqDesc')?.value.trim();
-  const coordOnly = document.getElementById('reqCoordOnly')?.checked || false;
-  if (!name || !contact || !address || !desc) { alert('Please fill in all required fields.'); return; }
+  const coordOnly = document.getElementById('reqCoordOnly')?.checked||false;
+  if (!name||!contact||!address||!desc) { alert('Please fill in all required fields.'); return; }
+  if (!selectedCategories.length) { alert('Please select at least one category.'); return; }
 
   const btn = document.querySelector('#requestModalFooter .btn-submit');
-  btn.textContent = 'Posting…'; btn.disabled = true;
-
+  btn.textContent='Posting…'; btn.disabled=true;
   try {
-    await airtablePost('requests', { name, contact, address, desc, category: selectedCat, coordinator_only: coordOnly, status: 'open' });
+    await airtablePost('requests', { name, contact, address, desc, category: selectedCategories, coordinator_only: coordOnly, status: 'open' });
     await loadAll();
-    document.getElementById('requestModalTitle').textContent = '✅ Request Posted!';
-    document.getElementById('requestModalBody').innerHTML = `
+    document.getElementById('requestModalTitle').textContent='✅ Request Posted!';
+    document.getElementById('requestModalBody').innerHTML=`
       <div class="success-msg"><div class="success-icon">🏘️</div>
       <h3>You're on the board, ${esc(name)}!</h3>
       <p>Your request is live. Your contact info and address are private — only coordinators can see them.</p></div>`;
-    document.getElementById('requestModalFooter').innerHTML =
+    document.getElementById('requestModalFooter').innerHTML=
       `<button class="btn-submit" onclick="closeModal('requestOverlay')">Done</button>`;
-  } catch(e) { alert('Something went wrong. Please try again.'); btn.textContent = 'Post Request'; btn.disabled = false; }
+  } catch(e) { alert('Something went wrong. Please try again.'); btn.textContent='Post Request'; btn.disabled=false; }
 }
 
 // ─── VOLUNTEER FORM ───────────────────────────────────────────
 function openVolunteerModal(id) {
-  const req = allRequests.find(r => r.id === id);
+  const req = allRequests.find(r=>r.id===id);
   if (!req) return;
   currentReqId = id;
-  const cat = CATS[req.category] || CATS.other;
+  const cats = getCategoryArray(req.category);
+  const catLabels = cats.map(c=>(CATS[c]||CATS.other).icon+' '+(CATS[c]||CATS.other).label).join(', ');
 
-  document.getElementById('volunteerModalBody').innerHTML = `
+  document.getElementById('volunteerModalBody').innerHTML=`
     <div class="request-preview">
-      <h4>${cat.icon} ${esc(req.name)}'s Request</h4>
-      <p>${esc(req.desc)}</p>
+      <h4>${esc(req.name)}'s Request</h4>
+      <p style="margin-bottom:4px">${esc(req.desc)}</p>
+      <p style="color:var(--mid-gray);font-size:0.78rem">${catLabels}</p>
     </div>
     ${req.coordinator_only
-      ? `<div class="info-box terra">🔵 <strong>Coordinator-matched.</strong> After you submit, the coordinator will review and connect you with the neighbor if approved.</div>`
-      : `<div class="info-box">Your name and contact will be shared with ${esc(req.name)} once you sign up.</div>`}
+      ?`<div class="info-box terra">🔵 <strong>Coordinator-matched.</strong> After you submit, the coordinator will review and connect you if approved.</div>`
+      :`<div class="info-box">Your name and contact will be shared with ${esc(req.name)} once you sign up.</div>`}
     <div class="form-group"><label>Your Name *</label><input type="text" id="volName" placeholder="e.g. Mike"></div>
     <div class="form-group"><label>Your Contact (phone or email) *</label><input type="text" id="volContact" placeholder="e.g. 480-555-9876"></div>
     <div class="form-group"><label>Note for coordinator or requestor (optional)</label>
       <textarea id="volMsg" placeholder="e.g. I'm free Saturday morning and have tools." style="min-height:70px"></textarea></div>`;
 
-  document.getElementById('volunteerModalFooter').innerHTML =
+  document.getElementById('volunteerModalFooter').innerHTML=
     `<button class="btn-cancel" onclick="closeModal('volunteerOverlay')">Cancel</button>
      <button class="btn-submit" onclick="submitVolunteer()">I Want to Help</button>`;
   openModal('volunteerOverlay');
 }
 
 async function submitVolunteer() {
-  const req = allRequests.find(r => r.id === currentReqId);
+  const req = allRequests.find(r=>r.id===currentReqId);
   const name    = document.getElementById('volName')?.value.trim();
   const contact = document.getElementById('volContact')?.value.trim();
-  const message = document.getElementById('volMsg')?.value.trim() || '';
-  if (!name || !contact) { alert('Please enter your name and contact info.'); return; }
+  const message = document.getElementById('volMsg')?.value.trim()||'';
+  if (!name||!contact) { alert('Please enter your name and contact info.'); return; }
 
   const btn = document.querySelector('#volunteerModalFooter .btn-submit');
-  btn.textContent = 'Signing up…'; btn.disabled = true;
-
+  btn.textContent='Signing up…'; btn.disabled=true;
   try {
     const status = req.coordinator_only ? 'pending' : 'approved';
     await airtablePost('volunteers', { volunteer_name: name, contact, request_id: currentReqId, message, status });
-    if (!req.coordinator_only) {
-      await airtablePatch('requests', currentReqId, { status: 'matched' });
-    }
+    if (!req.coordinator_only) await airtablePatch('requests', currentReqId, { status: 'matched' });
     await loadAll();
-    document.getElementById('volunteerModalBody').innerHTML = `
+    document.getElementById('volunteerModalBody').innerHTML=`
       <div class="success-msg"><div class="success-icon">🙌</div>
       <h3>Thank you, ${esc(name)}!</h3>
       <p>${req.coordinator_only
-        ? `Your sign-up has been sent to the coordinator for review. They'll be in touch shortly.`
-        : `You're signed up! The coordinator will share contact details so you can connect.`}</p></div>`;
-    document.getElementById('volunteerModalFooter').innerHTML =
+        ?`Your sign-up has been sent to the coordinator for review. They'll be in touch shortly.`
+        :`You're signed up! The coordinator will share contact details so you can connect.`}</p></div>`;
+    document.getElementById('volunteerModalFooter').innerHTML=
       `<button class="btn-submit" onclick="closeModal('volunteerOverlay')">Done</button>`;
-  } catch(e) { alert('Something went wrong. Please try again.'); btn.textContent = 'I Want to Help'; btn.disabled = false; }
+  } catch(e) { alert('Something went wrong. Please try again.'); btn.textContent='I Want to Help'; btn.disabled=false; }
+}
+
+// ─── VOLUNTEER POOL ───────────────────────────────────────────
+function openPoolModal() {
+  selectedSkills = [];
+  ['poolName','poolContact','poolAvailability','poolMessage'].forEach(id=>{if(document.getElementById(id))document.getElementById(id).value='';});
+  document.querySelectorAll('#skillCheckboxes input').forEach(cb=>{cb.checked=false;cb.closest('.checkbox-option').classList.remove('checked');});
+  document.getElementById('poolModalTitle').textContent='Join the Volunteer Pool';
+  document.getElementById('poolModalFooter').innerHTML=
+    `<button class="btn-cancel" onclick="closeModal('poolOverlay')">Cancel</button>
+     <button class="btn-submit" onclick="submitPool()">Join the Pool</button>`;
+  openModal('poolOverlay');
+}
+
+async function submitPool() {
+  const name         = document.getElementById('poolName')?.value.trim();
+  const contact      = document.getElementById('poolContact')?.value.trim();
+  const availability = document.getElementById('poolAvailability')?.value.trim()||'';
+  const message      = document.getElementById('poolMessage')?.value.trim()||'';
+  if (!name||!contact) { alert('Please enter your name and contact info.'); return; }
+
+  const btn = document.querySelector('#poolModalFooter .btn-submit');
+  btn.textContent='Joining…'; btn.disabled=true;
+  try {
+    await airtablePost('volunteers', { volunteer_name: name, contact, skills: selectedSkills, availability, message, status: 'general' });
+    await loadAll();
+    document.getElementById('poolModalBody').innerHTML=`
+      <div class="success-msg"><div class="success-icon">⭐</div>
+      <h3>Thank you, ${esc(name)}!</h3>
+      <p>You're in the volunteer pool! We'll reach out when a neighbor has a request that matches your skills. You're making Dobson Terrace a better place.</p></div>`;
+    document.getElementById('poolModalFooter').innerHTML=
+      `<button class="btn-submit" onclick="closeModal('poolOverlay')">Done</button>`;
+  } catch(e) { alert('Something went wrong. Please try again.'); btn.textContent='Join the Pool'; btn.disabled=false; }
 }
 
 // ─── ADMIN ────────────────────────────────────────────────────
 function openAdminModal() {
-  if (adminSession) { renderAdminPanel(); }
-  else { renderAdminLogin(); }
+  if (adminSession) { renderAdminPanel(); } else { renderAdminLogin(); }
   openModal('adminOverlay');
 }
 
 function renderAdminLogin() {
-  pendingAdminUser = '';
-  document.getElementById('adminModalBody').innerHTML = `
+  pendingAdminUser='';
+  document.getElementById('adminModalBody').innerHTML=`
     <div class="admin-login">
       <h3>🔐 Coordinator Access</h3>
       <p>Select your name and enter your PIN.</p>
@@ -600,40 +660,37 @@ function renderAdminLogin() {
 }
 
 function selectAdminUser(user) {
-  pendingAdminUser = user;
-  document.querySelectorAll('.user-select-btn').forEach(b => b.classList.remove('selected'));
-  const id = 'user' + user.charAt(0).toUpperCase() + user.slice(1);
-  document.getElementById(id)?.classList.add('selected');
+  pendingAdminUser=user;
+  document.querySelectorAll('.user-select-btn').forEach(b=>b.classList.remove('selected'));
+  document.getElementById('user'+user.charAt(0).toUpperCase()+user.slice(1))?.classList.add('selected');
 }
 
 function checkAdminPin() {
   const pin = document.getElementById('adminPin')?.value;
   if (!pendingAdminUser) { alert('Please select your name first.'); return; }
-  if (COORDINATOR_PINS[pendingAdminUser] === pin) {
-    adminSession = { user: pendingAdminUser, pin };
-    renderAdminPanel();
-  } else {
-    alert('Incorrect PIN. Please try again.');
-  }
+  if (COORDINATOR_PINS[pendingAdminUser]===pin) { adminSession={user:pendingAdminUser,pin}; renderAdminPanel(); }
+  else { alert('Incorrect PIN. Please try again.'); }
 }
 
 function renderAdminPanel() {
-  const pending = allRequests.filter(r => {
-    const pv = allVolunteers.filter(v => v.request_id === r.id && v.status === 'pending');
-    return pv.length > 0;
+  const pending = allRequests.filter(r=>{
+    const pv = allVolunteers.filter(v=>v.request_id===r.id&&v.status==='pending');
+    return pv.length>0;
   });
+  const pool = allVolunteers.filter(v=>v.status==='general');
 
-  document.getElementById('adminModalBody').innerHTML = `
+  document.getElementById('adminModalBody').innerHTML=`
     <div class="admin-tabs">
       <button class="admin-tab active" id="tabPending" onclick="switchAdminTab(this,'pending')">⏳ Pending (${pending.length})</button>
       <button class="admin-tab" id="tabAll" onclick="switchAdminTab(this,'all')">📋 All Requests</button>
+      <button class="admin-tab" id="tabPool" onclick="switchAdminTab(this,'pool')">⭐ Pool (${pool.length})</button>
     </div>
     <div id="adminTabContent"></div>`;
   renderAdminTab('pending');
 }
 
-function switchAdminTab(btn, tab) {
-  document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+function switchAdminTab(btn,tab) {
+  document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderAdminTab(tab);
 }
@@ -642,27 +699,26 @@ function renderAdminTab(tab) {
   const container = document.getElementById('adminTabContent');
   if (!container) return;
 
-  if (tab === 'pending') {
-    const rows = allRequests.map(r => {
-      const pv = allVolunteers.filter(v => v.request_id === r.id && v.status === 'pending');
+  if (tab==='pending') {
+    const rows = allRequests.map(r=>{
+      const pv = allVolunteers.filter(v=>v.request_id===r.id&&v.status==='pending');
       if (!pv.length) return null;
-      return { ...r, pendingVols: pv };
+      return {...r,pendingVols:pv};
     }).filter(Boolean);
 
     if (!rows.length) {
-      container.innerHTML = `<div class="empty-state"><div class="empty-icon">✅</div><p>No pending volunteer requests.</p></div>`;
+      container.innerHTML=`<div class="empty-state"><div class="empty-icon">✅</div><p>No pending volunteer requests.</p></div>`;
       return;
     }
-
-    container.innerHTML = rows.map(r => `
+    container.innerHTML=rows.map(r=>`
       <div class="admin-row">
-        <h4>${esc(r.name)} — ${(CATS[r.category]||CATS.other).icon} ${(CATS[r.category]||CATS.other).label}</h4>
+        <h4>${esc(r.name)} — ${getCategoryArray(r.category).map(c=>(CATS[c]||CATS.other).icon+' '+(CATS[c]||CATS.other).label).join(', ')}</h4>
         <div class="admin-private"><strong>📍 Address:</strong> ${esc(r.address)}<br><strong>📞 Contact:</strong> ${esc(r.contact)}</div>
         <p style="font-size:.85rem;color:var(--mid-gray);margin-bottom:8px">${esc(r.desc)}</p>
-        ${r.pendingVols.map(v => `
+        ${r.pendingVols.map(v=>`
           <div class="pending-item">
             <div><strong>${esc(v.volunteer_name)}</strong> — ${esc(v.contact)}
-              ${v.message ? `<br><span style="color:var(--mid-gray);font-size:.8rem">"${esc(v.message)}"</span>` : ''}
+              ${v.message?`<br><span style="color:var(--mid-gray);font-size:.8rem">"${esc(v.message)}"</span>`:''}
             </div>
             <div class="pending-actions">
               <button class="btn-approve" onclick="doApprove('${r.id}','${v.id}','${esc(v.volunteer_name)}','${esc(v.contact)}','${esc(r.name)}','${esc(r.address)}','${esc(r.contact)}')">✓ Approve</button>
@@ -671,83 +727,85 @@ function renderAdminTab(tab) {
           </div>`).join('')}
       </div>`).join('');
 
-  } else {
-    const active = allRequests.filter(r => r.status !== 'removed');
-    if (!active.length) {
-      container.innerHTML = `<div class="empty-state"><p>No requests yet.</p></div>`;
-      return;
-    }
-
-    container.innerHTML = active.map(r => {
-      const approved = allVolunteers.filter(v => v.request_id === r.id && v.status === 'approved');
-      const pending  = allVolunteers.filter(v => v.request_id === r.id && v.status === 'pending');
-      return `
-      <div class="admin-row">
+  } else if (tab==='all') {
+    const active = allRequests.filter(r=>r.status!=='removed');
+    if (!active.length) { container.innerHTML=`<div class="empty-state"><p>No requests yet.</p></div>`; return; }
+    container.innerHTML=active.map(r=>{
+      const approved = allVolunteers.filter(v=>v.request_id===r.id&&v.status==='approved');
+      const pending  = allVolunteers.filter(v=>v.request_id===r.id&&v.status==='pending');
+      const cats = getCategoryArray(r.category);
+      return `<div class="admin-row">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-          <h4 style="margin:0">${esc(r.name)} — ${(CATS[r.category]||CATS.other).icon} ${(CATS[r.category]||CATS.other).label}
+          <h4 style="margin:0">${esc(r.name)} — ${cats.map(c=>(CATS[c]||CATS.other).icon).join(' ')}
             <span class="badge ${r.status==='done'?'badge-done':r.status==='matched'?'badge-matched':'badge-open'}" style="margin-left:6px">${r.status}</span>
             ${r.coordinator_only?`<span class="badge badge-coord" style="margin-left:4px">coord</span>`:''}
           </h4>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
             ${r.status!=='done'?`<button class="btn-done" onclick="doMarkDone('${r.id}')">✓ Done</button>`:''}
-            ${r.status!=='removed'?`<button class="btn-reject" onclick="doRemove('${r.id}')">Archive</button>`:''}
+            ${r.status!=='removed'?`<button class="btn-archive" onclick="doRemove('${r.id}')">Archive</button>`:''}
           </div>
         </div>
         <div class="admin-private"><strong>📍</strong> ${esc(r.address)} &nbsp;|&nbsp; <strong>📞</strong> ${esc(r.contact)}</div>
         <p style="font-size:.85rem;color:var(--mid-gray)">${esc(r.desc)}</p>
-        ${approved.length ? `<p style="font-size:.82rem;color:var(--green);margin-top:6px">✓ Volunteers: ${approved.map(v=>`
+        ${approved.length?`<p style="font-size:.82rem;color:var(--green);margin-top:6px">✓ Volunteers: ${approved.map(v=>`
           <span style="display:inline-flex;align-items:center;gap:3px;background:var(--green-pale);border:1px solid var(--green-light);border-radius:10px;padding:2px 8px;margin:2px">
             ${esc(v.volunteer_name)}
             <button class="btn-remove-vol" onclick="doRemoveVol('${v.id}','${r.id}')" title="Remove">✕</button>
-          </span>`).join('')}</p>` : ''}
-        ${pending.length ? `<p style="font-size:.82rem;color:#f57f17;margin-top:4px">⏳ Pending: ${pending.map(v=>esc(v.volunteer_name)).join(', ')}</p>` : ''}
+          </span>`).join('')}</p>`:''}
+        ${pending.length?`<p style="font-size:.82rem;color:#f57f17;margin-top:4px">⏳ Pending: ${pending.map(v=>esc(v.volunteer_name)).join(', ')}</p>`:''}
       </div>`;
     }).join('');
+
+  } else if (tab==='pool') {
+    const pool = allVolunteers.filter(v=>v.status==='general');
+    if (!pool.length) { container.innerHTML=`<div class="empty-state"><div class="empty-icon">⭐</div><p>No one in the volunteer pool yet.</p></div>`; return; }
+    container.innerHTML=`
+      <p style="font-size:0.85rem;color:var(--mid-gray);margin-bottom:16px">${pool.length} neighbor${pool.length!==1?'s':''} available to help. Reach out directly when a matching request comes in.</p>
+      ${pool.map(v=>{
+        const skills = Array.isArray(v.skills)?v.skills:[];
+        return `<div class="pool-card">
+          <div class="pool-card-info">
+            <h4>${esc(v.volunteer_name)}</h4>
+            <p>📞 ${esc(v.contact)}${v.availability?` &nbsp;|&nbsp; 🕐 ${esc(v.availability)}`:''}</p>
+            ${v.message?`<p style="margin-top:4px;font-style:italic">"${esc(v.message)}"</p>`:''}
+            ${skills.length?`<div class="pool-skills">${skills.map(s=>`<span class="skill-tag">${(CATS[s]||CATS.other).icon} ${(CATS[s]||CATS.other).label}</span>`).join('')}</div>`:''}
+          </div>
+          <button class="btn-reject" onclick="doRemoveFromPool('${v.id}')">Remove</button>
+        </div>`;
+      }).join('')}`;
   }
 }
 
-async function doApprove(reqId, volId, volName, volContact, reqName, reqAddr, reqContact) {
-  await airtablePatch('volunteers', volId, { status: 'approved' });
-  await airtablePatch('requests', reqId, { status: 'matched' });
-  await loadAll();
-  renderAdminPanel();
+async function doApprove(reqId,volId,volName,volContact,reqName,reqAddr,reqContact) {
+  await airtablePatch('volunteers',volId,{status:'approved'});
+  await airtablePatch('requests',reqId,{status:'matched'});
+  await loadAll(); renderAdminPanel();
   alert(`✅ Match approved!\n\nContact ${volName} at ${volContact} and share:\n• ${reqName}'s address: ${reqAddr}\n• Their contact: ${reqContact}`);
 }
-
-async function doReject(volId) {
-  await airtablePatch('volunteers', volId, { status: 'rejected' });
-  await loadAll();
-  renderAdminPanel();
-}
-
-async function doMarkDone(reqId) {
-  await airtablePatch('requests', reqId, { status: 'done' });
-  await loadAll();
-  renderAdminPanel();
-}
-
+async function doReject(volId) { await airtablePatch('volunteers',volId,{status:'rejected'}); await loadAll(); renderAdminPanel(); }
+async function doMarkDone(reqId) { await airtablePatch('requests',reqId,{status:'done'}); await loadAll(); renderAdminPanel(); }
 async function doRemove(reqId) {
   if (!confirm('Archive this request? It will be removed from the public board but kept in your records.')) return;
-  await airtablePatch('requests', reqId, { status: 'removed' });
-  await loadAll();
-  renderAdminPanel();
+  await airtablePatch('requests',reqId,{status:'removed'}); await loadAll(); renderAdminPanel();
 }
-
-async function doRemoveVol(volId, reqId) {
+async function doRemoveVol(volId,reqId) {
   if (!confirm('Remove this volunteer from the request?')) return;
-  await airtablePatch('volunteers', volId, { status: 'removed' });
-  const remaining = allVolunteers.filter(v => v.request_id === reqId && v.id !== volId && v.status === 'approved');
-  if (!remaining.length) await airtablePatch('requests', reqId, { status: 'open' });
-  await loadAll();
-  renderAdminPanel();
+  await airtablePatch('volunteers',volId,{status:'removed'});
+  const remaining = allVolunteers.filter(v=>v.request_id===reqId&&v.id!==volId&&v.status==='approved');
+  if (!remaining.length) await airtablePatch('requests',reqId,{status:'open'});
+  await loadAll(); renderAdminPanel();
+}
+async function doRemoveFromPool(volId) {
+  if (!confirm('Remove this person from the volunteer pool?')) return;
+  await airtablePatch('volunteers',volId,{status:'removed'}); await loadAll(); renderAdminPanel();
 }
 
 // ─── UTILS ────────────────────────────────────────────────────
-function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
-function closeOnOverlay(e, id) { if (e.target.id === id) closeModal(id); }
+function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+function closeOnOverlay(e,id) { if(e.target.id===id) closeModal(id); }
 function esc(s) { return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-function fmtDate(iso) { if (!iso) return ''; return new Date(iso).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'America/Phoenix'}); }
+function fmtDate(iso) { if(!iso) return ''; return new Date(iso).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'America/Phoenix'}); }
 </script>
 </body>
 </html>
