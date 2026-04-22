@@ -671,15 +671,17 @@ function checkAdminPin() {
 }
 
 function renderAdminPanel() {
-  const pending = allRequests.filter(r=>{
+  const pendingVolCount = allRequests.filter(r=>{
     const pv = allVolunteers.filter(v=>v.request_id===r.id&&v.status==='pending');
     return pv.length>0;
-  });
+  }).length;
+  const openUnmatchedCount = allRequests.filter(r=>r.status==='open').length;
+  const pendingTotal = pendingVolCount + openUnmatchedCount;
   const pool = allVolunteers.filter(v=>v.status==='general');
 
   document.getElementById('adminModalBody').innerHTML=`
     <div class="admin-tabs">
-      <button class="admin-tab active" id="tabPending" onclick="switchAdminTab(this,'pending')">⏳ Pending (${pending.length})</button>
+      <button class="admin-tab active" id="tabPending" onclick="switchAdminTab(this,'pending')">⏳ Pending (${pendingTotal})</button>
       <button class="admin-tab" id="tabAll" onclick="switchAdminTab(this,'all')">📋 All Requests</button>
       <button class="admin-tab" id="tabPool" onclick="switchAdminTab(this,'pool')">⭐ Pool (${pool.length})</button>
     </div>
@@ -698,32 +700,71 @@ function renderAdminTab(tab) {
   if (!container) return;
 
   if (tab==='pending') {
-    const rows = allRequests.map(r=>{
+    // Section 1: open requests with no volunteers yet
+    const openUnmatched = allRequests.filter(r =>
+      r.status === 'open' && r.status !== 'removed' && r.status !== 'done'
+    );
+
+    // Section 2: requests with pending (coordinator-only) volunteer sign-ups
+    const pendingMatches = allRequests.map(r=>{
       const pv = allVolunteers.filter(v=>v.request_id===r.id&&v.status==='pending');
       if (!pv.length) return null;
       return {...r,pendingVols:pv};
     }).filter(Boolean);
 
-    if (!rows.length) {
-      container.innerHTML=`<div class="empty-state"><div class="empty-icon">✅</div><p>No pending volunteer requests.</p></div>`;
+    if (!openUnmatched.length && !pendingMatches.length) {
+      container.innerHTML=`<div class="empty-state"><div class="empty-icon">✅</div><p>No open or pending requests right now.</p></div>`;
       return;
     }
-    container.innerHTML=rows.map(r=>`
-      <div class="admin-row">
-        <h4>${esc(r.name)} — ${getCategoryArray(r.category).map(c=>(CATS[c]||CATS.other).icon+' '+(CATS[c]||CATS.other).label).join(', ')}</h4>
-        <div class="admin-private"><strong>📍 Address:</strong> ${esc(r.address)}<br><strong>📞 Contact:</strong> ${esc(r.contact)}</div>
-        <p style="font-size:.85rem;color:var(--mid-gray);margin-bottom:8px">${esc(r.desc)}</p>
-        ${r.pendingVols.map(v=>`
-          <div class="pending-item">
-            <div><strong>${esc(v.volunteer_name)}</strong> — ${esc(v.contact)}
-              ${v.message?`<br><span style="color:var(--mid-gray);font-size:.8rem">"${esc(v.message)}"</span>`:''}
+
+    let html = '';
+
+    if (openUnmatched.length) {
+      const poolVols = allVolunteers.filter(v=>v.status==='general');
+      html += `<p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--terra);margin-bottom:12px">📋 Open — No Volunteer Yet (${openUnmatched.length})</p>`;
+      html += openUnmatched.map(r=>`
+        <div class="admin-row">
+          <h4>${esc(r.name)} — ${getCategoryArray(r.category).map(c=>(CATS[c]||CATS.other).icon+' '+(CATS[c]||CATS.other).label).join(', ')}</h4>
+          <div class="admin-private"><strong>📍 Address:</strong> ${esc(r.address)}<br><strong>📞 Contact:</strong> ${esc(r.contact)}</div>
+          <p style="font-size:.85rem;color:var(--mid-gray)">${esc(r.desc)}</p>
+          <p style="font-size:.78rem;color:var(--mid-gray);margin-top:6px">📅 Posted ${fmtDate(r.submitted_at)} ${r.coordinator_only?'· <span style="color:#1565c0">Coordinator match only</span>':''}</p>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--sand-dark);display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end">
+            ${poolVols.length ? `
+            <div style="flex:1;min-width:180px">
+              <label style="font-size:0.78rem;font-weight:600;margin-bottom:4px;display:block">Assign from volunteer pool:</label>
+              <select id="poolSelect_${r.id}" style="width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;font-size:0.85rem;">
+                <option value="">— Select a volunteer —</option>
+                ${poolVols.map(v=>`<option value="${v.id}" data-name="${esc(v.volunteer_name)}" data-contact="${esc(v.contact)}">${esc(v.volunteer_name)} — ${esc(v.contact)}</option>`).join('')}
+              </select>
             </div>
-            <div class="pending-actions">
-              <button class="btn-approve" onclick="doApprove('${r.id}','${v.id}','${esc(v.volunteer_name)}','${esc(v.contact)}','${esc(r.name)}','${esc(r.address)}','${esc(r.contact)}')">✓ Approve</button>
-              <button class="btn-reject" onclick="doReject('${v.id}')">✕ Decline</button>
-            </div>
-          </div>`).join('')}
-      </div>`).join('');
+            <button class="btn-approve" onclick="assignFromPool('${r.id}')">✓ Assign</button>
+            <span style="font-size:0.78rem;color:var(--mid-gray);align-self:center">or</span>` : ''}
+            <button class="btn-edit" onclick="openManualVolunteerModal('${r.id}','${esc(r.name)}','${esc(r.address)}','${esc(r.contact)}')">+ Add Manually</button>
+          </div>
+        </div>`).join('');
+    }
+
+    if (pendingMatches.length) {
+      html += `<p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1565c0;margin:20px 0 12px">🔵 Coordinator Match — Needs Your Approval (${pendingMatches.length})</p>`;
+      html += pendingMatches.map(r=>`
+        <div class="admin-row">
+          <h4>${esc(r.name)} — ${getCategoryArray(r.category).map(c=>(CATS[c]||CATS.other).icon+' '+(CATS[c]||CATS.other).label).join(', ')}</h4>
+          <div class="admin-private"><strong>📍 Address:</strong> ${esc(r.address)}<br><strong>📞 Contact:</strong> ${esc(r.contact)}</div>
+          <p style="font-size:.85rem;color:var(--mid-gray);margin-bottom:8px">${esc(r.desc)}</p>
+          ${r.pendingVols.map(v=>`
+            <div class="pending-item">
+              <div><strong>${esc(v.volunteer_name)}</strong> — ${esc(v.contact)}
+                ${v.message?`<br><span style="color:var(--mid-gray);font-size:.8rem">"${esc(v.message)}"</span>`:''}
+              </div>
+              <div class="pending-actions">
+                <button class="btn-approve" onclick="doApprove('${r.id}','${v.id}','${esc(v.volunteer_name)}','${esc(v.contact)}','${esc(r.name)}','${esc(r.address)}','${esc(r.contact)}')">✓ Approve</button>
+                <button class="btn-reject" onclick="doReject('${v.id}')">✕ Decline</button>
+              </div>
+            </div>`).join('')}
+        </div>`).join('');
+    }
+
+    container.innerHTML = html;
 
   } else if (tab==='all') {
     const active = allRequests.filter(r=>r.status!=='removed');
@@ -780,6 +821,65 @@ async function doApprove(reqId,volId,volName,volContact,reqName,reqAddr,reqConta
   await loadAll(); renderAdminPanel();
   alert(`✅ Match approved!\n\nContact ${volName} at ${volContact} and share:\n• ${reqName}'s address: ${reqAddr}\n• Their contact: ${reqContact}`);
 }
+async function assignFromPool(reqId) {
+  const select = document.getElementById(`poolSelect_${reqId}`);
+  if (!select || !select.value) { alert('Please select a volunteer from the pool first.'); return; }
+  const volId = select.value;
+  const volName = select.options[select.selectedIndex].dataset.name;
+  const volContact = select.options[select.selectedIndex].dataset.contact;
+  const req = allRequests.find(r=>r.id===reqId);
+  if (!req) return;
+
+  // Create an approved volunteer record linked to this request
+  await airtablePost('volunteers', { volunteer_name: volName, contact: volContact, request_id: reqId, message: 'Assigned by coordinator from volunteer pool', status: 'approved' });
+  await airtablePatch('requests', reqId, { status: 'matched' });
+  await loadAll();
+  renderAdminPanel();
+  alert(`✅ ${volName} assigned!\n\nRemember to share:\n• ${req.name}'s address: ${req.address}\n• Their contact: ${req.contact}`);
+}
+
+function openManualVolunteerModal(reqId, reqName, reqAddr, reqContact) {
+  // Temporarily store context
+  window._manualReqId = reqId;
+  window._manualReqName = reqName;
+  window._manualReqAddr = reqAddr;
+  window._manualReqContact = reqContact;
+
+  // Reuse the volunteer overlay
+  document.getElementById('volunteerModalBody').innerHTML = `
+    <div class="request-preview">
+      <h4>Manually assigning a volunteer to ${esc(reqName)}'s request</h4>
+      <p>Enter the volunteer's details from your phone call.</p>
+    </div>
+    <div class="form-group"><label>Volunteer Name *</label><input type="text" id="manVolName" placeholder="e.g. Mike Garcia"></div>
+    <div class="form-group"><label>Volunteer Contact *</label><input type="text" id="manVolContact" placeholder="e.g. 480-555-1234"></div>
+    <div class="form-group"><label>Notes (optional)</label><textarea id="manVolNotes" placeholder="e.g. Spoke by phone, confirmed Saturday morning" style="min-height:60px"></textarea></div>`;
+  document.getElementById('volunteerModalFooter').innerHTML =
+    `<button class="btn-cancel" onclick="closeModal('volunteerOverlay')">Cancel</button>
+     <button class="btn-submit" onclick="submitManualVolunteer()">Save Volunteer</button>`;
+  openModal('volunteerOverlay');
+}
+
+async function submitManualVolunteer() {
+  const name = document.getElementById('manVolName')?.value.trim();
+  const contact = document.getElementById('manVolContact')?.value.trim();
+  const notes = document.getElementById('manVolNotes')?.value.trim() || '';
+  const reqId = window._manualReqId;
+  const req = allRequests.find(r=>r.id===reqId);
+  if (!name || !contact) { alert('Please enter the volunteer\'s name and contact.'); return; }
+
+  const btn = document.querySelector('#volunteerModalFooter .btn-submit');
+  btn.textContent = 'Saving…'; btn.disabled = true;
+  try {
+    await airtablePost('volunteers', { volunteer_name: name, contact, request_id: reqId, message: notes || 'Added manually by coordinator', status: 'approved' });
+    await airtablePatch('requests', reqId, { status: 'matched' });
+    await loadAll();
+    closeModal('volunteerOverlay');
+    renderAdminPanel();
+    alert(`✅ ${name} saved as volunteer!\n\nRemember to share:\n• ${req?.name}'s address: ${req?.address}\n• Their contact: ${req?.contact}`);
+  } catch(e) { alert('Something went wrong. Please try again.'); btn.textContent = 'Save Volunteer'; btn.disabled = false; }
+}
+
 async function doReject(volId) { await airtablePatch('volunteers',volId,{status:'rejected'}); await loadAll(); renderAdminPanel(); }
 async function doMarkDone(reqId) { await airtablePatch('requests',reqId,{status:'done'}); await loadAll(); renderAdminPanel(); }
 async function doRemove(reqId) {
